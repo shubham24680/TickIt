@@ -106,10 +106,7 @@ pages(images, title, subTitle, rating, body) {
               ),
               Row(
                 children: [
-                  const Icon(
-                    Icons.star,
-                    color: Colors.red,
-                  ),
+                  Tap(),
                   write(rating, FontWeight.normal, Colors.black, 'Maven', 14.0),
                 ],
               )
@@ -155,4 +152,31 @@ make(icon, text) {
       write(text, FontWeight.normal, Colors.lightBlue, 'Maven', 14.0),
     ],
   );
+}
+
+class Tap extends StatefulWidget {
+  const Tap({super.key});
+
+  @override
+  State<Tap> createState() => _TapState();
+}
+
+class _TapState extends State<Tap> {
+  static bool _active = false;
+  void _change() {
+    setState(() {
+      _active = !_active;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      onPressed: _change,
+      icon: Icon(
+        _active ? Icons.star_rounded : Icons.star_border_rounded,
+        color: Colors.redAccent,
+      ),
+    );
+  }
 }
