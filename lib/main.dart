@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -50,13 +52,11 @@ class MyHomePage extends StatelessWidget {
             " It is the fifth Forza Horizon title and twelfth main instalment in the Forza series. The game is set in a fictionalised representation of Mexico.",
       ),
       pages(
-        'assets/images/us2.jpg',
-        "The Last Of Us Part II",
-        "Ubisoft",
-        "8/10",
-        "Assassin's Creed Valhalla is a 2020 action role-playing video game developed by Ubisoft Montreal and published by Ubisoft."
-            " It is the twelfth major installment in the Assassin's Creed series, and the successor to 2018's Assassin's Creed Odyssey.",
-      ),
+          'assets/images/us2.jpg',
+          "The Last Of Us Part II",
+          "Naughty Dog",
+          "8/10",
+          "The Last of Us Part II is a 2020 action-adventure game developed by Naughty Dog and published by Sony Interactive Entertainment for the PlayStation 4."),
       pages(
         'assets/images/GOW.jpg',
         "God Of War",
@@ -106,7 +106,7 @@ pages(images, title, subTitle, rating, body) {
               ),
               Row(
                 children: [
-                  Tap(),
+                  const Tap(),
                   write(rating, FontWeight.normal, Colors.black, 'Maven', 14.0),
                 ],
               )
