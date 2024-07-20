@@ -1,8 +1,16 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/adapters.dart';
+import 'theme.dart';
 
-void main() {
+import 'routes.dart';
+import 'my_wishes.dart';
+
+void main() async {
+  await Hive.initFlutter();
+  // ignore: unused_local_variable
+  var wish = await Hive.openBox('wishlist');
+  var todo = await Hive.openBox('todo');
+
   runApp(const MyApp());
 }
 
@@ -12,15 +20,17 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'Cool Pages',
-      home: DefaultTabController(
-        length: 5,
-        child: Scaffold(
-          body: MyHomePage(),
-          backgroundColor: Colors.white,
-        ),
-      ),
+    return MaterialApp(
+      theme: theme(),
+      routes: routes,
+      home: const Wishes(),
+      // DefaultTabController(
+      //   length: 5,
+      //   child: Scaffold(
+      //     body: MyHomePage(),
+      //     backgroundColor: Colors.white,
+      //   ),
+      // ),
       debugShowCheckedModeBanner: false,
     );
   }
