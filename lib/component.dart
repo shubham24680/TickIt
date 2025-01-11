@@ -3,41 +3,39 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-buildAppBar(String text, Color backgroundColor, Color forgroundColor) {
-  return AppBar(
-    backgroundColor: backgroundColor,
-    surfaceTintColor: backgroundColor,
-    leading: Builder(
-      builder: (context) => CIcon(
-        onPressed: () => Scaffold.of(context).openDrawer(),
-        image: 'assets/icons/menu.svg',
-        color: forgroundColor,
-      ),
-    ),
-    title: Wrap(
-      children: [
-        CHeading(text: "my", color: forgroundColor),
-        CHeading(text: text, color: white),
-      ],
-    ),
-    centerTitle: true,
-    actions: [
-      CIcon(
-        onPressed: () {},
-        image: 'assets/icons/search.svg',
-        color: forgroundColor,
-      )
-    ],
-  );
+// MARK: DETAIL
+class Details {
+  Details({
+    required this.appTitle,
+    required this.backgroundColor,
+    required this.color,
+    required this.icon,
+  });
+
+  late final String appTitle;
+  late final Color backgroundColor;
+  late final Color color;
+  late final String icon;
 }
 
+List<Details> my = [
+  Details(appTitle: "Wishes", backgroundColor: blue, color: darkBlue, icon: 'assets/icons/wishes.svg'),
+  Details(appTitle: "Todo", backgroundColor: green, color: darkGreen, icon: 'assets/icons/todo.svg'),
+];
+
+// MARK: ICON
 class CIcon extends StatelessWidget {
   const CIcon(
-      {super.key, required this.image, required this.onPressed, this.color});
+      {super.key,
+      required this.image,
+      required this.onPressed,
+      this.color,
+      this.size});
 
   final String image;
   final Function() onPressed;
   final Color? color;
+  final double? size;
 
   @override
   Widget build(BuildContext context) {
@@ -46,16 +44,19 @@ class CIcon extends StatelessWidget {
       icon: SvgPicture.asset(
         image,
         colorFilter: ColorFilter.mode(color ?? darkBlue, BlendMode.srcIn),
+        height: size ?? 24,
       ),
     );
   }
 }
 
-class CHeading extends StatelessWidget {
-  const CHeading({super.key, required this.text, this.color});
+// MARK: HEADING
+class Maven extends StatelessWidget {
+  const Maven({super.key, required this.text, this.color, this.size});
 
   final String text;
   final Color? color;
+  final double? size;
 
   @override
   Widget build(BuildContext context) {
@@ -63,16 +64,17 @@ class CHeading extends StatelessWidget {
       text,
       style: TextStyle(
         fontFamily: 'Maven',
-        color: color ?? darkBlue,
         fontWeight: FontWeight.bold,
-        fontSize: 20,
+        color: color ?? darkBlue,
+        fontSize: size ?? 20,
       ),
     );
   }
 }
 
-class CTitle extends StatelessWidget {
-  const CTitle({
+// MARK: TITLE
+class Quicksand extends StatelessWidget {
+  const Quicksand({
     super.key,
     required this.text,
     this.color,

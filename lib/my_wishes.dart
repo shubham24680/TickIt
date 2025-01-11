@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
-import 'drawer.dart';
 import 'theme.dart';
 import 'component.dart';
 
@@ -204,92 +203,79 @@ class _WishesState extends State<Wishes> {
   // MARK: BUILD
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-
     return Scaffold(
-      drawer: const CDrawer(),
-      appBar: buildAppBar("Wishes", blue, darkBlue),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 20, top: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const CHeading(text: "Active wishes"),
+      body: ListView(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 20, top: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                // Title
+                const Maven(text: "Active wishes"),
 
-                  // button to create new card.
-                  CIcon(
-                    image: 'assets/icons/circle_plus.svg',
-                    color: grey,
-                    onPressed: () => _bottomSheet(null),
-                  ),
-                ],
-              ),
+                // button to create new card.
+                CIcon(
+                  image: 'assets/icons/circle_plus.svg',
+                  color: grey,
+                  onPressed: () => _bottomSheet(null),
+                ),
+              ],
             ),
-            SizedBox(
-              height: (size.height * 0.2 + 10) * _card.length,
-              child: ListView.builder(
-                itemCount: _card.length,
-                physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) {
-                  final currentCard = _card[index];
+          ),
+          SizedBox(
+            height: _card.length * 170,
+            child: ListView.builder(
+              itemCount: _card.length,
+              physics: const NeverScrollableScrollPhysics(),
+              itemBuilder: (context, index) {
+                final currentCard = _card[index];
 
-                  return Container(
-                    margin: const EdgeInsets.symmetric(
-                      horizontal: 10,
-                      vertical: 5,
-                    ),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 20,
-                      vertical: 15,
-                    ),
-                    height: size.height * 0.2,
-                    decoration: BoxDecoration(
-                      color: darkBlue,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Expanded(
-                              child: CTitle(
-                                text: currentCard['title'],
-                              ),
-                            ),
-                            // button for update or delete card.
-                            more(currentCard['key']),
-                          ],
-                        ),
-                        LinearPercentIndicator(
-                          padding: const EdgeInsets.only(right: 10),
-                          percent: currentCard['percent'] * 0.1,
-                          backgroundColor: Colors.white.withOpacity(0.1),
-                          progressColor: blue,
-                          barRadius: const Radius.circular(5),
-                          trailing: Text(
-                            "${currentCard['percent']} %",
-                            style: TextStyle(
-                              fontFamily: 'Maven',
-                              color: blue,
-                              fontWeight: FontWeight.bold,
+                return Container(
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                  height: 160,
+                  decoration: BoxDecoration(
+                    color: darkBlue,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            child: Quicksand(
+                              text: currentCard['title'],
                             ),
                           ),
+                          // button for update or delete card.
+                          more(currentCard['key']),
+                        ],
+                      ),
+                      LinearPercentIndicator(
+                        padding: const EdgeInsets.only(right: 10),
+                        percent: currentCard['percent'] * 0.1,
+                        backgroundColor: Colors.white.withOpacity(0.1),
+                        progressColor: blue,
+                        barRadius: const Radius.circular(5),
+                        trailing: Maven(
+                          text: "${currentCard['percent']} %",
+                          color: blue,
+                          size: 14,
                         ),
-                      ],
-                    ),
-                  );
-                },
-              ),
+                      ),
+                    ],
+                  ),
+                );
+              },
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-import 'drawer.dart';
 import 'theme.dart';
 import 'component.dart';
 
@@ -174,8 +173,6 @@ class _TodoState extends State<Todo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const CDrawer(),
-      appBar: buildAppBar("Todo", green, darkGreen),
       body: ListView.builder(
         itemCount: _list.length,
         padding:
@@ -222,7 +219,7 @@ class _TodoState extends State<Todo> {
                     child: Row(
                       children: [
                         Expanded(
-                          child: CTitle(
+                          child: Quicksand(
                             text: currentList['content'],
                             color: darkGreen,
                             size: 18,
