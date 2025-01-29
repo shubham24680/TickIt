@@ -39,16 +39,19 @@ dependencies:
   google_fonts: ^6.2.1
   flutter_svg: ^2.0.17
   intl: ^0.20.1
+  flutter_slidable: ^3.1.2
+  supabase_flutter: ^2.8.3
+  url_launcher: ^6.3.1
 
 flutter_native_splash:
   android: true
   ios: true
 
   color: "#FFFFFF"
-  image: assets/images/glare_min.png
+  image: assets/icons/TickIt.png
   android_12:
     color: "#FFFFFF"
-    image: assets/images/Glare_max.png
+    image: assets/icons/TickIt_max.png
 
 dev_dependencies:
   flutter_test:

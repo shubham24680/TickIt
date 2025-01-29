@@ -11,9 +11,9 @@ class CardList extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       itemCount: card.length,
-      padding: const EdgeInsets.only(left: 10, top: 10, right: 10, bottom: 70),
+      padding: const EdgeInsets.only(top: 20, bottom: 70),
       itemBuilder: (context, index) {
-        return TaskCard(task: card[index]);
+        return TaskCard(currentTask: card[index], currentIndex: index);
       },
     );
   }

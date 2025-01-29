@@ -9,12 +9,14 @@ class Inter extends StatelessWidget {
     this.color,
     this.size,
     this.weight,
+    this.decoration,
   });
 
   final String text;
   final Color? color;
   final double? size;
   final FontWeight? weight;
+  final TextDecoration? decoration;
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +24,9 @@ class Inter extends StatelessWidget {
       text,
       style: GoogleFonts.inter(
         color: color ?? black,
-        fontSize: size ?? 14,
+        fontSize: size ?? 16,
         fontWeight: weight ?? FontWeight.w500,
+        decoration: decoration ?? TextDecoration.none,
       ),
     );
   }

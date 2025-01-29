@@ -92,10 +92,10 @@ BEGIN
             VALUE "CompanyName", "com.example" "\0"
             VALUE "FileDescription", "glare" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "glare" "\0"
+            VALUE "InternalName", "TickIt" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2025 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "glare.exe" "\0"
-            VALUE "ProductName", "glare" "\0"
+            VALUE "OriginalFilename", "TickIt.exe" "\0"
+            VALUE "ProductName", "TickIt" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END
