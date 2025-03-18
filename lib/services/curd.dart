@@ -1,24 +1,25 @@
 import 'dart:developer';
 
 import 'package:supabase_flutter/supabase_flutter.dart';
-
-import 'package:glare/features/model/task.dart';
+import 'package:tickit/features/model/task.dart';
 
 class SupabaseDB {
-  final _supabase = Supabase.instance.client.from('notes');
+  final _supabase = Supabase.instance.client.from('Tasks');
 
-  create(String newTask) async {
+  create(String newTask, String? newTag) async {
     log("created");
     return await _supabase.insert({
       'task': newTask,
-      'isCompleted': false,
+      'tag': newTag,
     }).select();
   }
 
   update(Task tempTask) async {
     await _supabase.update({
       'task': tempTask.task,
-      'isCompleted': tempTask.isCompleted,
+      'tag': tempTask.tag,
+      'is_completed': tempTask.isCompleted,
+      'priority_level': tempTask.priorityLevel,
     }).eq("id", tempTask.id);
     log("updated");
   }
@@ -29,7 +30,7 @@ class SupabaseDB {
   }
 
   delete(Task tempTask) async {
-    await _supabase.delete().eq("id", tempTask.id);
     log("deleted");
+    await _supabase.delete().eq("id", tempTask.id);
   }
 }

@@ -1,8 +1,8 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:glare/features/model/task.dart';
-import 'package:glare/services/curd.dart';
+import 'package:tickit/features/model/task.dart';
+import 'package:tickit/services/curd.dart';
 
 class HomeProvider extends ChangeNotifier {
   final SupabaseDB _db = SupabaseDB();
@@ -17,7 +17,7 @@ class HomeProvider extends ChangeNotifier {
 
   // Create
   void addTask() async {
-    final response = await _db.create(taskController.text);
+    final response = await _db.create(taskController.text.trim(), null);
     if (response != null) {
       log("message successful");
       _allTasks.insert(

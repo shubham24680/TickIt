@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:glare/core/utils/app_colors.dart';
+import 'package:tickit/core/utils/app_colors.dart';
 
 final ThemeData light = ThemeData(
-  // colorSchemeSeed: Colors.amber,
-  iconTheme: IconThemeData(
-    color: white,
-  ),
   scaffoldBackgroundColor: white,
   appBarTheme: AppBarTheme(
     backgroundColor: white,
     surfaceTintColor: white,
   ),
+  iconTheme: IconThemeData(
+    color: white,
+  ),
   textSelectionTheme: TextSelectionThemeData(
     cursorColor: black,
-    selectionColor: black.withOpacity(0.4),
+    selectionColor: black.withAlpha(100),
     selectionHandleColor: black,
   ),
 );

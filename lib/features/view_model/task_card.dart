@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
-
-import 'package:glare/features/model/task.dart';
-
-import 'package:glare/core/utils/app_colors.dart';
-import 'package:glare/core/utils/app_icons.dart';
-import 'package:glare/core/widgets/text.dart';
-import 'package:glare/features/view_model/home_provider.dart';
+import 'package:tickit/core/utils/app_colors.dart';
+import 'package:tickit/core/utils/app_icons.dart';
+import 'package:tickit/core/widgets/text.dart';
+import 'package:tickit/features/model/task.dart';
+import 'package:tickit/features/view_model/home_provider.dart';
 
 class TaskCard extends StatefulWidget {
   const TaskCard(

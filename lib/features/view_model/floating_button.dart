@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
-import 'package:glare/core/utils/app_colors.dart';
-import 'package:glare/core/utils/app_icons.dart';
+import 'package:tickit/core/utils/app_colors.dart';
+import 'package:tickit/core/utils/app_icons.dart';
 
 Widget floatingButton(BuildContext context) {
   return FloatingActionButton(

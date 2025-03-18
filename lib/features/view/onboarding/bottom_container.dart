@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:glare/core/utils/app_colors.dart';
-import 'package:glare/core/utils/app_icons.dart';
-import 'package:glare/features/view/onboarding/text_button.dart';
+
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tickit/core/utils/app_colors.dart';
+import 'package:tickit/core/utils/app_icons.dart';
+import 'package:tickit/features/view/onboarding/text_button.dart';
+import 'package:tickit/services/google_auth.dart';
 
 class BottomContainer extends StatelessWidget {
   const BottomContainer({
@@ -30,7 +32,7 @@ class BottomContainer extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
       ),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
             "Let's get started! Join now and take control of your tasks.",
@@ -41,18 +43,20 @@ class BottomContainer extends StatelessWidget {
             ),
           ),
           ElevatedButton(
-            onPressed: () => Navigator.pushNamed(context, "/home"),
+            onPressed: () => GoogleService.signInWithGoogle(context),
             style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xFFF58DD7).withOpacity(0.3),
-                foregroundColor: Color(0xFFF58DD7),
-                shadowColor: Colors.transparent,
-                minimumSize: Size(buttonSize, buttonSize),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15),
-                )),
+              backgroundColor: pink.withAlpha(75),
+              foregroundColor: pink,
+              shadowColor: Colors.transparent,
+              minimumSize: Size(buttonSize, buttonSize),
+              maximumSize: Size(300, 300),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15),
+              ),
+            ),
             child: Svgs(
               image: "assets/icons/google.svg",
-              color: Color(0xFFF58DD7),
+              color: pink,
               size: 35,
             ),
           ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:glare/features/model/task.dart';
-import 'package:glare/features/view_model/task_card.dart';
+
+import 'package:tickit/features/model/task.dart';
+import 'package:tickit/features/view_model/task_card.dart';
 
 class CardList extends StatelessWidget {
   const CardList({super.key, required this.card});

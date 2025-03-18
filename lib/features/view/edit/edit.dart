@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import 'package:glare/core/utils/app_colors.dart';
-import 'package:glare/core/utils/app_icons.dart';
-import 'package:glare/core/widgets/text.dart';
-import 'package:glare/features/view_model/text_field.dart';
-import 'package:glare/features/view_model/home_provider.dart';
+import 'package:tickit/core/utils/app_colors.dart';
+import 'package:tickit/core/utils/app_icons.dart';
+import 'package:tickit/core/widgets/text.dart';
+import 'package:tickit/features/view_model/home_provider.dart';
+import 'package:tickit/features/view_model/text_field.dart';
 
 class Edit extends StatelessWidget {
   const Edit({super.key});

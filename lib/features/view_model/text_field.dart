@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:glare/core/utils/app_colors.dart';
-import 'package:glare/features/view_model/home_provider.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:tickit/core/utils/app_colors.dart';
+import 'package:tickit/features/view_model/home_provider.dart';
 
 class Editor extends StatefulWidget {
   const Editor({super.key});

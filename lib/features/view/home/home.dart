@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:glare/features/view/home/appbar.dart';
-import 'package:glare/features/view_model/floating_button.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-
-import 'package:glare/core/utils/app_colors.dart';
-import 'package:glare/features/view/home/card_list.dart';
-import 'package:glare/core/widgets/text.dart';
-import 'package:glare/features/view_model/home_provider.dart';
+import 'package:tickit/core/utils/app_colors.dart';
+import 'package:tickit/core/widgets/text.dart';
+import 'package:tickit/features/view/home/appbar.dart';
+import 'package:tickit/features/view/home/card_list.dart';
+import 'package:tickit/features/view_model/floating_button.dart';
+import 'package:tickit/features/view_model/home_provider.dart';
 
 class Home extends StatelessWidget {
   Home({super.key});

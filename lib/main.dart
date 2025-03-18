@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:tickit/core/utils/app_colors.dart';
 
-import 'package:glare/routes/routes.dart';
-import 'package:glare/theme/light_theme.dart';
+import 'package:tickit/routes/routes.dart';
+import 'package:tickit/theme/light_theme.dart';
 // import 'package:glare/theme/dark_theme.dart';
-import 'package:glare/features/view_model/home_provider.dart';
+import 'package:tickit/features/view_model/home_provider.dart';
 
-import 'package:glare/features/view_model/authentication.dart';
+import 'package:tickit/features/view_model/authentication.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,15 +26,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: black,
+      systemNavigationBarColor: black,
+    ));
+
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => HomeProvider()),
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         routes: routes,
         theme: light,
         // darkTheme: dark,
-        debugShowCheckedModeBanner: false,
         home: Authentication(),
       ),
     );
