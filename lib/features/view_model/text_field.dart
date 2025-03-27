@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:tickit/core/utils/app_colors.dart';
-import 'package:tickit/features/view_model/home_provider.dart';
+import 'package:tickit/features/view_model/providers/task_provider.dart';
 
 class Editor extends StatefulWidget {
   const Editor({super.key});
@@ -22,7 +22,7 @@ class _EditorState extends State<Editor> {
 
   @override
   Widget build(BuildContext context) {
-    final HomeProvider prov = Provider.of(context);
+    final TaskProvider prov = Provider.of(context);
     return TextField(
       onChanged: (value) {
         prov.onChanged(value.isNotEmpty);

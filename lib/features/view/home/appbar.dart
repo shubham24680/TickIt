@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 import 'package:tickit/core/utils/app_colors.dart';
 import 'package:tickit/core/widgets/text.dart';
 
-AppBar homeAppBar(BuildContext context, String now) {
+AppBar homeAppBar(BuildContext context, String now, String avatar) {
   return AppBar(
     automaticallyImplyLeading: false,
     title: Padding(
@@ -22,7 +23,8 @@ AppBar homeAppBar(BuildContext context, String now) {
             onTap: () => Navigator.pushNamed(context, "/profile"),
             child: CircleAvatar(
               radius: 15,
-              backgroundImage: AssetImage("assets/images/onboarding_bg.jpg"),
+              backgroundColor: black,
+              child: SvgPicture.asset(avatar, fit: BoxFit.contain),
             ),
           ),
         ],

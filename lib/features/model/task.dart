@@ -18,8 +18,8 @@ class Task {
       id: json["id"],
       task: json["task"],
       tag: json["tag"],
-      isCompleted: json["is_completed"],
-      priorityLevel: json["priority_level"],
+      isCompleted: json["isCompleted"],
+      priorityLevel: json["priorityLevel"],
     );
   }
 }

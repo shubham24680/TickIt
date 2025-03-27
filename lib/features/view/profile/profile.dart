@@ -1,47 +1,98 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:tickit/core/utils/app_colors.dart';
 import 'package:tickit/core/widgets/text.dart';
+import 'package:tickit/features/view_model/providers/settings_provider.dart';
+import 'package:tickit/features/view_model/providers/task_provider.dart';
 import 'package:tickit/services/google_auth.dart';
 
 class Profile extends StatelessWidget {
-  const Profile({super.key});
+  Profile({super.key});
+
+  final User? _user = Supabase.instance.client.auth.currentUser;
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
+    final taskProv = Provider.of<TaskProvider>(context, listen: false);
+    final settingProv = Provider.of<SettingsProvider>(context, listen: false);
 
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          leading: IconButton(
-            onPressed: () => Navigator.pop(context),
-            icon: Icon(
-              Icons.arrow_back_ios_new_rounded,
-            ),
-          ),
-          title: Inter(
-            text: "Profile",
-            size: 20,
-            weight: FontWeight.bold,
-          ),
-          centerTitle: true,
+          backgroundColor: Colors.transparent,
         ),
-        body: SizedBox(
-          width: size.width,
+        body: Padding(
+          padding: const EdgeInsets.only(bottom: 100),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Inter(
-                text: Supabase.instance.client.auth.currentUser?.email ??
-                    "NO EMAIL",
+              Container(
+                height: 350,
+                width: double.infinity,
+                color: lightGrey,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    // Profile Pic
+                    Container(
+                      height: 120,
+                      width: 120,
+                      decoration: BoxDecoration(
+                        color: black,
+                        shape: BoxShape.circle,
+                        border: Border.all(color: white, width: 5),
+                      ),
+                      child: GestureDetector(
+                        onTap: () =>
+                            Navigator.pushNamed(context, "/changeAvatar"),
+                        child: Consumer<SettingsProvider>(
+                          builder: (_, provider, __) =>
+                              SvgPicture.asset(provider.selectedAvatar),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    // Name
+                    Inter(
+                      text: _user?.userMetadata?["full_name"] ?? "...",
+                      textAlign: TextAlign.center,
+                      weight: FontWeight.bold,
+                      size: 20,
+                    ),
+                    // Email Address
+                    Inter(
+                      text: _user?.email ?? "...",
+                      size: 12,
+                    ),
+                  ],
+                ),
               ),
+
+              // Logout button
               ElevatedButton(
-                onPressed: () => GoogleService.signOut(context),
-                child: Inter(text: "Log Out"),
+                onPressed: () async {
+                  await GoogleService.signOut(context);
+                  taskProv.clearTask();
+                  settingProv.clearSetting();
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.transparent,
+                  shadowColor: Colors.transparent,
+                  foregroundColor: black,
+                ),
+                child: Inter(
+                  text: "Log Out",
+                  color: Colors.red,
+                  weight: FontWeight.bold,
+                ),
               ),
             ],
           ),
         ),
+        extendBodyBehindAppBar: true,
       ),
     );
   }

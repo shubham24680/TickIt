@@ -5,7 +5,7 @@ import 'package:tickit/core/utils/app_colors.dart';
 import 'package:tickit/core/utils/app_icons.dart';
 import 'package:tickit/core/widgets/text.dart';
 import 'package:tickit/features/model/task.dart';
-import 'package:tickit/features/view_model/home_provider.dart';
+import 'package:tickit/features/view_model/providers/task_provider.dart';
 
 class TaskCard extends StatefulWidget {
   const TaskCard(
@@ -21,7 +21,7 @@ class TaskCard extends StatefulWidget {
 class _TaskCardState extends State<TaskCard> {
   @override
   Widget build(BuildContext context) {
-    final HomeProvider prov = Provider.of(context, listen: false);
+    final TaskProvider prov = Provider.of(context, listen: false);
 
     // End side buttons
     customSlidableAction(

@@ -1,5 +1,7 @@
-import 'package:flutter/material.dart';
+import 'dart:io';
 
+import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tickit/core/utils/app_colors.dart';
 import 'package:tickit/core/utils/app_icons.dart';
@@ -43,7 +45,13 @@ class BottomContainer extends StatelessWidget {
             ),
           ),
           ElevatedButton(
-            onPressed: () => GoogleService.signInWithGoogle(context),
+            onPressed: () {
+              if (!kIsWeb && (Platform.isAndroid || Platform.isIOS)) {
+                GoogleService.nativeSignInWithGoogle(context);
+              } else {
+                GoogleService.webSignInWithGoogle(context);
+              }
+            },
             style: ElevatedButton.styleFrom(
               backgroundColor: pink.withAlpha(75),
               foregroundColor: pink,
@@ -71,9 +79,9 @@ class BottomContainer extends StatelessWidget {
               children: [
                 const TextSpan(
                     text: "By creating an account you agree to TickIt \n"),
-                textButton("Terms of Services", "https://hinge.co/terms"),
+                textButton(context, "Terms of Services", "/termsOfServices"),
                 const TextSpan(text: " and "),
-                textButton("Privacy Policy.", "https://hinge.co/cookie-policy"),
+                textButton(context, "Privacy Policy.", "/privacyPolicy"),
               ],
             ),
           ),

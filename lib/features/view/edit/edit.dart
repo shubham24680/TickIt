@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:tickit/core/utils/app_colors.dart';
 import 'package:tickit/core/utils/app_icons.dart';
 import 'package:tickit/core/widgets/text.dart';
-import 'package:tickit/features/view_model/home_provider.dart';
+import 'package:tickit/features/view_model/providers/task_provider.dart';
 import 'package:tickit/features/view_model/text_field.dart';
 
 class Edit extends StatelessWidget {
@@ -11,6 +11,8 @@ class Edit extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final taskProv = Provider.of<TaskProvider>(context, listen: false);
+
     return SafeArea(
       child: Scaffold(
         body: Padding(
@@ -20,7 +22,11 @@ class Edit extends StatelessWidget {
             children: [
               // Close button
               IconButton(
-                onPressed: () => Navigator.pop(context),
+                onPressed: () {
+                  taskProv.taskController.clear();
+                  taskProv.onChanged(false);
+                  Navigator.pop(context);
+                },
                 icon: Svgs(image: "assets/icons/close.svg"),
               ),
               SizedBox(height: 20),
@@ -34,7 +40,7 @@ class Edit extends StatelessWidget {
         ),
         bottomNavigationBar: Padding(
           padding: const EdgeInsets.all(10),
-          child: Consumer<HomeProvider>(
+          child: Consumer<TaskProvider>(
             builder: (_, value, __) {
               return ElevatedButton(
                 onPressed: value.isButtonEnabled
@@ -44,6 +50,8 @@ class Edit extends StatelessWidget {
                         } else {
                           value.addTask();
                         }
+                        value.taskController.clear();
+                        value.onChanged(false);
                         Navigator.pop(context);
                       }
                     : null,

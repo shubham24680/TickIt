@@ -10,9 +10,11 @@ class Inter extends StatelessWidget {
     this.size,
     this.weight,
     this.decoration,
+    this.textAlign,
   });
 
   final String text;
+  final TextAlign? textAlign;
   final Color? color;
   final double? size;
   final FontWeight? weight;
@@ -22,6 +24,7 @@ class Inter extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
+      textAlign: textAlign ?? TextAlign.start,
       style: GoogleFonts.inter(
         color: color ?? black,
         fontSize: size ?? 16,

@@ -2,10 +2,10 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:tickit/features/model/task.dart';
-import 'package:tickit/services/curd.dart';
+import 'package:tickit/services/task_curd.dart';
 
-class HomeProvider extends ChangeNotifier {
-  final SupabaseDB _db = SupabaseDB();
+class TaskProvider extends ChangeNotifier {
+  final TaskDB _db = TaskDB();
   List<Task> _allTasks = [];
   TextEditingController taskController = TextEditingController();
   bool _isButtonEnabled = false;
@@ -23,7 +23,6 @@ class HomeProvider extends ChangeNotifier {
       _allTasks.insert(
           0, Task.fromJson(response.first as Map<String, dynamic>));
     }
-    taskController.clear();
     notifyListeners();
   }
 
@@ -97,9 +96,9 @@ class HomeProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  @override
-  void dispose() {
-    taskController.dispose();
-    super.dispose();
+  void clearTask() {
+    log("clear Task");
+    _allTasks.clear();
+    notifyListeners();
   }
 }

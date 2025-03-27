@@ -3,11 +3,11 @@ import 'dart:developer';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:tickit/features/model/task.dart';
 
-class SupabaseDB {
+class TaskDB {
   final _supabase = Supabase.instance.client.from('Tasks');
 
   create(String newTask, String? newTag) async {
-    log("created");
+    log("created Task");
     return await _supabase.insert({
       'task': newTask,
       'tag': newTag,
@@ -18,19 +18,19 @@ class SupabaseDB {
     await _supabase.update({
       'task': tempTask.task,
       'tag': tempTask.tag,
-      'is_completed': tempTask.isCompleted,
-      'priority_level': tempTask.priorityLevel,
+      'isCompleted': tempTask.isCompleted,
+      'priorityLevel': tempTask.priorityLevel,
     }).eq("id", tempTask.id);
-    log("updated");
+    log("updated Task");
   }
 
   read() async {
-    log("read");
+    log("read Task");
     return await _supabase.select('*').order("id", ascending: false);
   }
 
   delete(Task tempTask) async {
-    log("deleted");
+    log("deleted Task");
     await _supabase.delete().eq("id", tempTask.id);
   }
 }

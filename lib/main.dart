@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:tickit/core/utils/app_colors.dart';
 
+import 'package:tickit/core/utils/app_colors.dart';
 import 'package:tickit/routes/routes.dart';
 import 'package:tickit/theme/light_theme.dart';
-// import 'package:glare/theme/dark_theme.dart';
-import 'package:tickit/features/view_model/home_provider.dart';
+import 'package:tickit/features/view_model/providers/connectivity_provider.dart';
+import 'package:tickit/features/view_model/providers/settings_provider.dart';
+import 'package:tickit/features/view_model/providers/task_provider.dart';
 
 import 'package:tickit/features/view_model/authentication.dart';
+import 'package:tickit/features/view/profile/profile.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,7 +35,9 @@ class MyApp extends StatelessWidget {
 
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => HomeProvider()),
+        ChangeNotifierProvider(create: (context) => ConnectivityProvider()),
+        ChangeNotifierProvider(create: (context) => TaskProvider()),
+        ChangeNotifierProvider(create: (context) => SettingsProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -41,6 +45,7 @@ class MyApp extends StatelessWidget {
         theme: light,
         // darkTheme: dark,
         home: Authentication(),
+        // home: Profile(),
       ),
     );
   }
