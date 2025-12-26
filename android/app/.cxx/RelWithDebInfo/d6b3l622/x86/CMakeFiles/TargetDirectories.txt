@@ -1,0 +1,2 @@
+/Users/shubhampatel/Documents/workspace/WorkRamp/android/app/.cxx/RelWithDebInfo/d6b3l622/x86/CMakeFiles/edit_cache.dir
+/Users/shubhampatel/Documents/workspace/WorkRamp/android/app/.cxx/RelWithDebInfo/d6b3l622/x86/CMakeFiles/rebuild_cache.dir

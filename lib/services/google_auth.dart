@@ -3,22 +3,20 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:tickit/core/constants/api_constants.dart';
 import 'package:tickit/services/settings_curd.dart';
 
 class GoogleService {
   static final _supabase = Supabase.instance.client;
 
   /// Web Client ID that you registered with Google Cloud.
-  static final String _webClientId =
-      '92589055617-su8r89blunflid5671rl5f4edp7u57j5.apps.googleusercontent.com';
+  static final String _webClientId = ApiConstants.WEB_CLIENT_ID;
 
   // iOS Client ID that you registered with Google Cloud.
-  static final String _iosClientId =
-      '92589055617-rce6tvpjfd857sauvrtcf681gh8stvkn.apps.googleusercontent.com';
+  static final String _iosClientId = ApiConstants.IOS_CLIENT_ID;
 
-  // desktip Client ID that you registered with Google Cloud.
-  static final String _desktopClientId =
-      '92589055617-rce6tvpjfd857sauvrtcf681gh8stvkn.apps.googleusercontent.com';
+  // desktop Client ID that you registered with Google Cloud.
+  static final String _desktopClientId = ApiConstants.DESKTOP_CLIENT_ID;
 
   // Google sign in on Android will work without providing the Android
   // Client ID registered on Google Cloud.

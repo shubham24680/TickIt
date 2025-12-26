@@ -1,0 +1,2 @@
+/Users/shubhampatel/Documents/workspace/WorkRamp/android/app/.cxx/Debug/4d2z2l23/x86/CMakeFiles/edit_cache.dir
+/Users/shubhampatel/Documents/workspace/WorkRamp/android/app/.cxx/Debug/4d2z2l23/x86/CMakeFiles/rebuild_cache.dir
